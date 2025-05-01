@@ -21,16 +21,12 @@ const RootLayout = () => {
           options={{ title: "Home" }}
         />
         <Stack.Screen
-          name="about"
-          options={{ title: "About" }}
-        />
-        <Stack.Screen
-          name="contact"
-          options={{ title: "Contact" }}
+          name="(auth)"
+          options={{ headerShown: false, animation: "none" }}
         />
       </Stack>
     </>
-  );
+  );  
 };
 
 export default RootLayout;

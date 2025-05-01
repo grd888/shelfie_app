@@ -20,16 +20,16 @@ const Home = () => {
       <ThemedText>Reading List App</ThemedText>
       <Spacer />
       <Link
-        href="/about"
+        href="/login"
         style={styles.link}
       >
-        <ThemedText>About</ThemedText>
+        <ThemedText>Login</ThemedText>
       </Link>
       <Link
-        href="/contact"
+        href="/register"
         style={styles.link}
       >
-        <ThemedText>Contact</ThemedText>
+        <ThemedText>Register</ThemedText>
       </Link>
     </ThemedView>
   );
