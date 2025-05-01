@@ -12,10 +12,15 @@ import ThemedText from "../components/ThemedText";
 const Home = () => {
   return (
     <ThemedView style={styles.container}>
-      <ThemedLogo/>
-      <Spacer height={20}/>
+      <ThemedLogo />
+      <Spacer height={20} />
 
-      <ThemedText style={styles.title} title>The Number 1</ThemedText>
+      <ThemedText
+        style={styles.title}
+        title
+      >
+        The Number 1
+      </ThemedText>
       <Spacer height={10} />
       <ThemedText>Reading List App</ThemedText>
       <Spacer />
@@ -30,6 +35,12 @@ const Home = () => {
         style={styles.link}
       >
         <ThemedText>Register</ThemedText>
+      </Link>
+      <Link
+        href="/profile"
+        style={styles.link}
+      >
+        <ThemedText>Profile</ThemedText>
       </Link>
     </ThemedView>
   );
@@ -47,7 +58,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 18,
   },
-  
+
   link: {
     marginTop: 10,
     borderBottomWidth: 1,
