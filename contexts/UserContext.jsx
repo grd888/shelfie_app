@@ -26,6 +26,12 @@ export const UserProvider = ({ children }) => {
     }
 
     async function logout() {
+        try {
+            await account.deleteSession("current");
+            setUser(null);
+        } catch (error) {
+            throw Error(error.message); // Re-throw the error so it can be caught by the component
+        }
     }
 
     return (
