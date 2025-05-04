@@ -1,4 +1,9 @@
-import { Keyboard, StyleSheet, Text, TouchableWithoutFeedback } from "react-native";
+import {
+  Keyboard,
+  StyleSheet,
+  Text,
+  TouchableWithoutFeedback,
+} from "react-native";
 import { useState } from "react";
 import { useUser } from "../../hooks/useUser";
 import ThemedText from "../../components/ThemedText";
@@ -7,18 +12,20 @@ import Spacer from "../../components/Spacer";
 import { Link } from "expo-router";
 import ThemedButton from "../../components/ThemedButton.jsx";
 import ThemedTextInput from "../../components/ThemedTextInput.jsx";
+import { Colors } from "../../constants/Colors.js";
 
 const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  const [error, setError] = useState(null);
   const { register } = useUser();
-  
+
   const handleSubmit = async () => {
+    setError(null);
     try {
       await register(email, password);
     } catch (error) {
-      console.log(error);
+      setError(error.message);
     }
   };
   return (
@@ -52,6 +59,10 @@ const Register = () => {
           <Text style={{ color: "#f2f2f2" }}>Register</Text>
         </ThemedButton>
 
+        {error && (
+          <ThemedText style={styles.error}>{error}</ThemedText>
+        )}
+
         <Spacer height={100} />
         <Link href="/login">
           <ThemedText style={{ textAlign: "center" }}>Login instead</ThemedText>
@@ -73,5 +84,15 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontWeight: "bold",
     fontSize: 18,
+  },
+  error: {
+    color: Colors.warning,
+    padding: 10,
+    backgroundColor: "#f5c1c8",
+    borderColor: Colors.warning,
+    borderWidth: 1,
+    borderRadius: 5,
+    textAlign: "center",
+    marginHorizontal: 20,
   },
 });

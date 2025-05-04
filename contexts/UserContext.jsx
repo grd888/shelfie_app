@@ -12,7 +12,7 @@ export const UserProvider = ({ children }) => {
             const response = await account.get();
             setUser(response);
         } catch (error) {
-            console.log(error);
+            throw Error(error.message); // Re-throw the error so it can be caught by the component
         }
     }
 
@@ -21,7 +21,7 @@ export const UserProvider = ({ children }) => {
             await account.create(ID.unique(), email, password);
             await login(email, password);
         } catch (error) {
-            console.log(error);
+            throw Error(error.message); // Re-throw the error so it can be caught by the component
         }
     }
 

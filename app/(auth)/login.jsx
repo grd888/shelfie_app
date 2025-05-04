@@ -14,14 +14,17 @@ import Spacer from "../../components/Spacer";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  const [error, setError] = useState();
   const { login } = useUser();
 
   const handleSubmit = async () => {
+    setError(null);
     try {
       await login(email, password);
     } catch (error) {
-      console.log(error);
+      console.log("Error logging in")
+      console.error(error);
+      setError(error.message || 'An error occurred during login');
     }
   };
 
@@ -56,10 +59,14 @@ const Login = () => {
         <Text style={{ color: "#f2f2f2" }}>Login</Text>
       </ThemedButton>
 
+      <Spacer />
+
+      {error && <Text style={styles.error}>{error}</Text>}
+
       <Spacer height={100} />
       <Link href="/register">
         <ThemedText style={{ textAlign: "center" }}>
-          Register instead
+          Register instead      
         </ThemedText>
       </Link>
     </ThemedView>
@@ -88,5 +95,14 @@ const styles = StyleSheet.create({
   },
   pressed: {
     opacity: 0.7,
+  },
+  error: {
+    color: Colors.warning,
+    padding: 10,
+    backgroundColor: '#f5c1c8',
+    borderColor: Colors.warning,
+    borderWidth: 1,
+    borderRadius: 5,
+    marginHorizontal: 10,
   },
 });
