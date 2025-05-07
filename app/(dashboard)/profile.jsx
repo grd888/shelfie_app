@@ -10,11 +10,14 @@ const Profile = () => {
   const { user, logout } = useUser();
   return (
     <ThemedView style={styles.container}>
+
       <ThemedText style={styles.heading}>{user.email}</ThemedText>
 
       <Spacer />
+
       <ThemedText>Time to start reading some books...</ThemedText>
       <Spacer />
+
       <ThemedButton onPress={logout}>
         <Text style={{ color: "#f2f2f2" }}>Logout</Text>
       </ThemedButton>
