@@ -11,7 +11,7 @@ const RootLayout = () => {
 
   return (
     <UserProvider>
-      <BooksProvier>
+      <BooksProvider>
         <StatusBar value="auto" />
         <Stack
           screenOptions={{
@@ -32,7 +32,7 @@ const RootLayout = () => {
             options={{ headerShown: false }}
           />
         </Stack>
-      </BooksProvier>
+      </BooksProvider>
     </UserProvider>
   );  
 };
